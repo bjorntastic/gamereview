@@ -1,7 +1,7 @@
 <% if @game.errors.any? %>
 	
 	<div class='errors'>
-		<p>There are <%= pluralize(@game.errors.count, 'error') %> that need fixing:</p>
+		<p><%= pluralize(@game.errors.count, 'error') %> found:</p>
 		<ul>
 			<% @game.errors.full_messages.each do |e| %>
 				<li><%= e %></li>

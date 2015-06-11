@@ -1,5 +1,6 @@
 <h1><%= @game %></h1>
 
+<%= link_to 'Back', games_path %><br />
 <%= link_to 'Leave a review', new_game_review_path(@game) %>
 
 <br />
@@ -9,8 +10,9 @@
 <% @game.reviews.each_with_index do |r,i| %>
 
 <div>
-	<h4><%= i+1 %>. <%= r.title %></h4>
+	<h4><%= i+1 %>. <%= r.title %> | <%= r.rating %> out of 5</h4>
 	<p><%= r.comment %></p>
+	<p>review by USER on <%= r.created_at.strftime('%m/%d/%y %H:%M') %></p>
 </div>
 <hr />
 
