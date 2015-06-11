@@ -1,0 +1,21 @@
+<%= form_for [@game, @review] do |f| %>
+
+	<table>
+		<tr>
+			<th><%= f.label :rating %></th>
+			<td><%= f.number_field :rating %></td>
+		</tr>
+		<tr>
+			<th><%= f.label :title %></th>
+			<td><%= f.text_field :title %></td>
+		</tr>
+		<tr>
+			<th><%= f.label :comment %></th>
+			<td><%= f.text_area :comment %></td>
+		</tr>
+		<tr>
+			<td><%= f.submit 'Add review' %></td>
+		</tr>
+	</table>
+
+<% end %>

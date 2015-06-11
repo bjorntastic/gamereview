@@ -1,3 +1,16 @@
+<% if @game.errors.any? %>
+	
+	<div class='errors'>
+		<p>There are <%= pluralize(@game.errors.count, 'error') %> that need fixing:</p>
+		<ul>
+			<% @game.errors.full_messages.each do |e| %>
+				<li><%= e %></li>
+			<% end %>
+		</ul>
+	</div>
+
+<% end %>
+
 <%= form_for @game do |f| %>
 
 	<table>

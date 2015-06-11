@@ -16,7 +16,7 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
     if @game.save
       flash[:notice] = 'Game created.'
-      redirect_to @game
+      redirect_to :games
     else
       render 'new'
     end
