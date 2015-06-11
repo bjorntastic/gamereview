@@ -1,9 +1,4 @@
 class ReviewsController < ApplicationController
-  def index
-  end
-
-  def show
-  end
 
   def new
   	@review = Review.new
@@ -24,6 +19,13 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+  end
+
+  def destroy
+  	@game = Game.find(params[:game_id])
+  	Review.find(params[:id]).destroy
+  	flash[:notice] = 'Review deleted.'
+  	redirect_to @game
   end
 
   private
