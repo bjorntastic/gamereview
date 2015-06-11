@@ -1,2 +1,13 @@
-<h1>Games#show</h1>
-<p>Find me in app/views/games/show.html.erb</p>
+<h1><%= @game %></h1>
+
+
+
+<%= @game.reviews.each do |r| %>
+
+<div>
+	<%= raw("<span>rate!</span>") * r.rating %>
+	<h4><%= r.title %></h4>
+	<p></p>
+</div>
+
+<% end %>

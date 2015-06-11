@@ -1,2 +1,22 @@
 <h1>Games#index</h1>
-<p>Find me in app/views/games/index.html.erb</p>
+
+<p>Check out and rate all these awesome games.<br /></p>
+
+<table>
+<% @games.each_with_index do |g,i| %>
+	
+	<tr class=''>
+		<th><%= g %></th>
+		<td><%= g.genre %></td>
+		<td><%= g.publisher %></td>
+		<td><%= g.platform %></td>
+		<td><%= link_to 'Show', g %>
+		<td><%= link_to 'Edit', edit_game_path(g) %></td>
+		<td><%= link_to 'Delete', g, :method => 'delete' %></td>
+	</tr>
+
+<% end %>
+</table>
+
+<br />
+<h3><%= link_to 'Add Game', new_game_path %></h3>
