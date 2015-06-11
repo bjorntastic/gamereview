@@ -1,13 +1,13 @@
 <% if @game.errors.any? %>
 	
-	<div class='errors'>
+	<section class='errors'>
 		<p><%= pluralize(@game.errors.count, 'error') %> found:</p>
 		<ul>
 			<% @game.errors.full_messages.each do |e| %>
 				<li><%= e %></li>
 			<% end %>
 		</ul>
-	</div>
+	</section>
 
 <% end %>
 
@@ -20,7 +20,7 @@
 		</tr>
 		<tr>
 			<th><%= f.label :genre %></th>
-			<td><%= f.select :genre, ["Shooter", "RPG", "Strategy"] %></td>
+			<td><%= f.select :genre, ["Shooter", "MOBA", "RPG", "Strategy"] %></td>
 		</tr>
 		<tr>
 			<th><%= f.label :publisher %></th>

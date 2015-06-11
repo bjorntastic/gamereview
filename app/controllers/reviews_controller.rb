@@ -18,9 +18,6 @@ class ReviewsController < ApplicationController
   	end
   end
 
-  def edit
-  end
-
   def destroy
   	@game = Game.find(params[:game_id])
   	Review.find(params[:id]).destroy
