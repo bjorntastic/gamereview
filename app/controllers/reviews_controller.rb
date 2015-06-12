@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+  before_action :check_if_logged_in
+  
   def new
   	@review = Review.new
   	@game = Game.find(params[:game_id])

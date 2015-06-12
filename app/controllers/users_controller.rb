@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
-  
+
   def login
   end
 
   def logout
+  	session[:user_id] = nil 
+  	session[:username] = nil
+  	flash[:notice] = "You're logged out."
+  	redirect_to '/'
   end
 
   def attempt_login
@@ -14,7 +18,8 @@ class UsersController < ApplicationController
   		end
   	end
   	if authorized_user
-  		# store login in the session here
+  		session[:user_id] = authorized_user.id 
+  		session[:username] = authorized_user.username
   		flash[:notice] = "You're logged in."
   		redirect_to '/games'
   	else

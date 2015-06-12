@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	
+	<nav class='logout'>
+		<%= link_to 'Logout', 'logout' if !session[:user_id].nil? %>
+	</nav>
+
 <% if !flash[:notice].blank? %>
 	<div class='flash'>
 		<p><%= flash[:notice] %></p>
