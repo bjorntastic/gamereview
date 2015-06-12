@@ -1,2 +1,36 @@
-<h1>Users#register</h1>
-<p>Find me in app/views/users/register.html.erb</p>
+<h1>Register an account and start reviewing awesome games.</h1>
+
+<% if @user.errors.any? %>
+	<div class='errors'>
+		<p><%= pluralize(@user.errors.count, 'error') %> found:</p>
+		<ul>
+			<% @user.errors.full_messages.each do |e| %>
+				<li><%= e %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<%= form_for(@user) do |f| %>
+	
+	<div>
+		<%= f.label :username %>
+		<%= f.text_field :username %>
+	</div>
+	<div>
+		<%= f.label :password %>
+		<%= f.password_field :password %>
+	</div>
+	<div>
+		<%= f.label :password_confirmation %>
+		<%= f.password_field :password_confirmation %>
+	</div>
+	<div>
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</div>
+	<div>
+		<%= f.submit 'Register' %>
+	</div>
+
+<% end %>
