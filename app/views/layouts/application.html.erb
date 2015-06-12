@@ -7,10 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	
+
+<% unless session[:user_id].nil? %>
 	<nav class='logout'>
-		<%= link_to 'Logout', 'logout' if !session[:user_id].nil? %>
+		<p>Loggd in as <strong><%= session[:username] %></strong> | <%= link_to 'Logout', 'logout' %>
 	</nav>
+<% end %>
 
 <% if !flash[:notice].blank? %>
 	<div class='flash'>

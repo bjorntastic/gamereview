@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
   	@review = Review.new(review_params)
   	@game = Game.find(params[:game_id])
   	@review.game = @game
+    @review.user_id = session[:user_id]
   	if @review.save
   		flash[:notice] = 'Review created.'
   		redirect_to @game
