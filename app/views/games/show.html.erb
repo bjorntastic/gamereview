@@ -1,19 +1,23 @@
-<h1><%= @game %></h1>
+<h1><em><%= @game %></em></h1>
 
-<%= link_to 'Back', games_path %><br />
-<%= link_to 'Leave a review', new_game_review_path(@game) %>
-
-<br />
-
-<h2>Other players have said:</h2>
-
-<% @game.reviews.each_with_index do |r,i| %>
-
-<div>
-	<h4><%= i+1 %>. <%= r.title %> | <%= r.rating %> out of 5</h4>
-	<p><%= r.comment %></p>
-	<p>review by <%= r.user %> on <%= r.created_at.strftime('%m/%d/%y %H:%M') %> | <%= link_to 'Delete', game_review_path(@game, r), :method => 'delete' %></p>
+<div class='row'>
+	<%= link_to 'Back', games_path , :class => 'btn back-button', :style => 'margin-left:15px;float:left' %>
+	<%= link_to 'Leave a review', new_game_review_path(@game), :class => 'btn review-button', :style => 'background-color:#68C3A3;margin-left:20px;float:left'%>
 </div>
-<hr />
 
+<% unless @game.reviews.empty? %>
+	<section class=''>
+		<h3>Other players have said:</h3>
+		<br/>
+
+		<% @game.reviews.each_with_index do |r,i| %>
+
+		<div>
+			<h4><%= i+1 %>. <%= r.title %> | <%= r.rating %> out of 5</h4>
+			<p><%= r.comment %></p>
+			<p>review by <%= r.user %> on <%= r.created_at.strftime('%m/%d/%y %H:%M') %> | <%= link_to 'Delete', game_review_path(@game, r), :method => 'delete' %></p>
+		</div>
+		<hr/>
+		<% end %>
+	</section>
 <% end %>

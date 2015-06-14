@@ -2,31 +2,33 @@
 
 <p>Check out and rate all these awesome games.<br /></p>
 
-<table class='main-table'>
-	<tr>
-		<td class='col-xs-2 col-md-1'>Game</td>
-		<td class='col-xs-2 col-md-1'>Genre</td>
-		<td class='col-xs-2 col-md-1'>Publisher</td>
-		<td class='col-xs-2 col-md-1'>Platform</td>
-		<td class='col-xs-1'></td>
-		<td class='col-xs-1'></td>
-		<td class='col-xs-1'></td>
-	</tr>
-	
-<% @games.each_with_index do |g,i| %>
-	
-	<tr>
-		<th><%= g %></th>
-		<td><%= g.genre %></td>
-		<td><%= g.publisher %></td>
-		<td><%= g.platform %></td>
-		<td><button class='btn show-button'><%= link_to 'Show', g %></button></td>
-		<td><button class='btn edit-button'><%= link_to 'Edit', edit_game_path(g) %></button></td>
-		<td><button class='btn del-button'><%= link_to 'Delete', g, :method => 'delete' %></button></td>
-	</tr>
+<div class='row main-table-wrapper'>
+	<table class='main-table'>
+		<tr>
+			<td class='col-xs-2 col-md-1'>Game</td>
+			<td class='col-xs-2 col-md-1'>Genre</td>
+			<td class='col-xs-2 col-md-1'>Publisher</td>
+			<td class='col-xs-2 col-md-1'>Platform</td>
+			<td class='col-xs-1'></td>
+			<td class='col-xs-1'></td>
+			<td class='col-xs-1'></td>
+		</tr>
+		
+	<% @games.each_with_index do |g,i| %>
+		
+		<tr>
+			<th><%= g %></th>
+			<td><%= g.genre %></td>
+			<td><%= g.publisher %></td>
+			<td><%= g.platform %></td>
+			<td><%= link_to 'Show', g, :class => 'btn show-button' %></td>
+			<td><%= link_to 'Edit', edit_game_path(g), :class => 'btn edit-button' %></td>
+			<td><%= link_to 'Delete', g, :method => 'delete', :class => 'btn del-button' %></td>
+		</tr>
 
-<% end %>
-</table>
+	<% end %>
+	</table>
+</div>
 
 <br />
-<button class='btn add-button'><%= link_to 'Add Game', new_game_path %></button>
+<%= link_to 'Add Game', new_game_path, :class => 'btn add-button' %>

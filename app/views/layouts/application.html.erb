@@ -9,13 +9,15 @@
 <body>
 
 <% unless session[:user_id].nil? %>
-	<nav class='logout'>
-		<p>Loggd in as <strong><%= session[:username] %></strong> | <%= link_to 'Logout', 'logout' %>
-	</nav>
+	<div class='container'>
+		<nav class='logout'>
+			<p>Loggd in as <strong><%= session[:username] %></strong> | <%= link_to 'Logout', 'logout' %>
+		</nav>
+	</div>
 <% end %>
 
 <% if !flash[:notice].blank? %>
-	<div class='flash'>
+	<div class='container flash'>
 		<p><%= flash[:notice] %></p>
 	</div>
 <% end %>

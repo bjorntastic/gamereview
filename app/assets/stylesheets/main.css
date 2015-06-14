@@ -6,7 +6,6 @@
 
 .errors ul li {
 	background-color: #e43741;
-
 	width: 250px;
 }
 
@@ -17,7 +16,8 @@
 .main-table tr:nth-child(1) td {
 	font-weight: bold;
 	background-color: #ECF0F1;
-	height: 40px;
+	height: 30px;
+	font-size: 1.3em;
 }
 
 .new-table-wrapper {
@@ -31,7 +31,13 @@
 	background-color: red;
 }
 
-.main-table tr {
+.main-table-wrapper {
+	text-align: center;
+	background-color: #ECF0F1;
+	padding: 20px;
+}
+
+.main-table-wrapper th {
 	text-align: center;
 }
 
@@ -41,34 +47,36 @@
 	width: 150px;
 }
 
-.show-button a, .edit-button a, .del-button a, .back-button a {
+.show-button, .edit-button, .del-button, .back-button {
+	width: 60px;
+	height: 22px;
+	padding: 0px;
 	color: #fff;
 	font-weight: bold;
 }
 
 .show-button {
 	background-color: #68C3A3;
-	width: 70px;
-	height: 30px;
-
 }
 
 .edit-button {
 	background-color: #59ABE3;
-	width: 70px;
-	height: 30px;
 }
 
 .del-button {
 	background-color: #D24D57;
-	width: 70px;
-	height: 30px;
-	margin-right: -5px;
 }
 
 .back-button {
 	background-color: #59ABE3;
+}
+
+.review-button {
+	width: 120px;
+	height: 22px;
+	padding: 0px;
 	color: #fff;
+	font-weight: bold;
 }
 
 a:hover {
