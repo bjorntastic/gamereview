@@ -9,3 +9,69 @@
 
 	width: 250px;
 }
+
+.main-table tr:nth-child(even) {
+	background-color: lightblue;
+}
+
+.main-table tr:nth-child(1) td {
+	font-weight: bold;
+	background-color: #ECF0F1;
+	height: 40px;
+}
+
+.new-table-wrapper {
+	width: 300px;
+	background-color: #ECF0F1;
+	border: 1px solid #DADFE1;
+	padding: 20px;
+}
+
+.new-table:nth-child(0) {
+	background-color: red;
+}
+
+.main-table tr {
+	text-align: center;
+}
+
+.add-button {
+	background-color: lightgreen;
+	font-weight: bold;
+	width: 150px;
+}
+
+.show-button a, .edit-button a, .del-button a, .back-button a {
+	color: #fff;
+	font-weight: bold;
+}
+
+.show-button {
+	background-color: #68C3A3;
+	width: 70px;
+	height: 30px;
+
+}
+
+.edit-button {
+	background-color: #59ABE3;
+	width: 70px;
+	height: 30px;
+}
+
+.del-button {
+	background-color: #D24D57;
+	width: 70px;
+	height: 30px;
+	margin-right: -5px;
+}
+
+.back-button {
+	background-color: #59ABE3;
+	color: #fff;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #AEA8D3;
+}

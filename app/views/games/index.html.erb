@@ -2,28 +2,31 @@
 
 <p>Check out and rate all these awesome games.<br /></p>
 
-<table>
+<table class='main-table'>
 	<tr>
-		<td>Game</td>
-		<td>Genre</td>
-		<td>Publisher</td>
-		<td>Platform</td>
+		<td class='col-xs-2 col-md-1'>Game</td>
+		<td class='col-xs-2 col-md-1'>Genre</td>
+		<td class='col-xs-2 col-md-1'>Publisher</td>
+		<td class='col-xs-2 col-md-1'>Platform</td>
+		<td class='col-xs-1'></td>
+		<td class='col-xs-1'></td>
+		<td class='col-xs-1'></td>
 	</tr>
 	
 <% @games.each_with_index do |g,i| %>
 	
-	<tr class=''>
+	<tr>
 		<th><%= g %></th>
 		<td><%= g.genre %></td>
 		<td><%= g.publisher %></td>
 		<td><%= g.platform %></td>
-		<td><%= link_to 'Show', g %>
-		<td><%= link_to 'Edit', edit_game_path(g) %></td>
-		<td><%= link_to 'Delete', g, :method => 'delete' %></td>
+		<td><button class='btn show-button'><%= link_to 'Show', g %></button></td>
+		<td><button class='btn edit-button'><%= link_to 'Edit', edit_game_path(g) %></button></td>
+		<td><button class='btn del-button'><%= link_to 'Delete', g, :method => 'delete' %></button></td>
 	</tr>
 
 <% end %>
 </table>
 
 <br />
-<h3><%= link_to 'Add Game', new_game_path %></h3>
+<button class='btn add-button'><%= link_to 'Add Game', new_game_path %></button>
