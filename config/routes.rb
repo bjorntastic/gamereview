@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/register' => 'users#register'
   post '/register' => 'users#create'
   get '/logout' => 'users#logout'
+  get '/search' => 'games#search'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

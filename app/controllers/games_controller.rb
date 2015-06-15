@@ -2,6 +2,18 @@ class GamesController < ApplicationController
   
   before_action :check_if_logged_in
 
+  def search
+    query = params[:search]
+    @result = Game.where("name like ?", query).first
+    if @result.blank?
+      @games = Game.all
+      flash[:notice] = "Couldn't find that game. Try something else!"
+      render 'index'
+    else
+      redirect_to "/games/#{@result.id}"
+    end
+  end
+
   def index
     @games = Game.all
   end
