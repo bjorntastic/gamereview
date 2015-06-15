@@ -16,10 +16,14 @@
 	</div>
 <% end %>
 
-<% if !flash[:notice].blank? %>
-	<div class='container flash'>
-		<p><%= flash[:notice] %></p>
-	</div>
+<% unless flash.blank? %>
+	<% flash.each do |level, msg| %>
+		<div class='container'>
+			<div class='col-md-4 <%= level %>'>
+				<p><%= msg %></p>
+			</div>
+		</div>
+	<% end %>
 <% end %>
 
 <div class='container'>

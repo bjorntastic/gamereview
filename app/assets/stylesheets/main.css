@@ -104,3 +104,17 @@
 .search-button:hover {
 	color: #000;
 }
+
+.notice {
+	background-color: #C8F7C5;
+	padding-top: 8px;
+	display: block;
+	width: auto;
+}
+
+.error {
+	background-color: #D24D57;
+	padding-top: 8px;
+	display: block;
+	width: auto;
+}
