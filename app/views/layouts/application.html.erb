@@ -11,7 +11,7 @@
 <% unless session[:user_id].nil? %>
 	<div class='container'>
 		<nav class='logout'>
-			<p>Loggd in as <strong><%= session[:username] %></strong> | <%= link_to 'Logout', 'logout' %>
+			<p>Logged in as <strong><%= session[:username] %></strong> | <%= link_to 'Logout', 'logout' %>
 		</nav>
 	</div>
 <% end %>
@@ -19,7 +19,7 @@
 <% unless flash.blank? %>
 	<% flash.each do |level, msg| %>
 		<div class='container'>
-			<div class='col-md-4 <%= level %>'>
+			<div class='col-md-4 col-xs-6 <%= level %>'>
 				<p><%= msg %></p>
 			</div>
 		</div>
@@ -29,8 +29,6 @@
 <div class='container'>
 	<%= yield %>
 </div>
-
-<script src='/app/assets/javascripts/bootstrap.min.js'></script>
 
 </body>
 </html>

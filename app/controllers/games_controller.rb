@@ -4,18 +4,40 @@ class GamesController < ApplicationController
 
   def search
     query = params[:search]
-    @result = Game.where("name like ?", query).first
-    if @result.blank?
+    if query.blank?
       @games = Game.all
-      flash.now[:error] = "Couldn't find that game. Try something else!"
+      flash.now[:error] = "We can't search for nothing, try writing something in the box before hitting 'Go'."
       render 'index'
     else
-      redirect_to "/games/#{@result.id}"
+      @result = Game.where("name like ?", "%#{query}%").first
+      if @result.blank?
+        @games = Game.all
+        flash.now[:error] = "Couldn't find that game. Try something else!"
+        render 'index'
+      else
+        redirect_to "/games/#{@result.id}"
+      end
     end
   end
 
   def index
-    @games = Game.all
+    platform = params[:platform]
+    genre = params[:genre]
+
+    if platform.blank? || platform == 'All'
+      @games = Game.all
+    else
+      @games = Game.where("platform like ?", platform)
+    end
+
+    if platform.blank?
+      if genre.blank? || genre == 'All'
+        @games = Game.all
+      else
+        @games = Game.where("genre like ?", genre)
+      end
+    end
+
   end
 
   def show

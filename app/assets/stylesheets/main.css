@@ -15,7 +15,7 @@
 
 .main-table tr:nth-child(1) td {
 	font-weight: bold;
-	background-color: #ECF0F1;
+	background-color: #FFF1D0;
 	height: 30px;
 	font-size: 1.3em;
 }
@@ -33,7 +33,7 @@
 
 .main-table-wrapper {
 	text-align: center;
-	background-color: #ECF0F1;
+	background-color: #FFF1D0;
 	padding: 20px;
 }
 
@@ -41,8 +41,28 @@
 	text-align: center;
 }
 
+.filters {
+	display: inline-block;
+	margin-left: 50px;
+}
+
+.platform {
+	border: 2px solid #06AED5;
+	color: #000;
+	font-weight: bold;
+	width: 50px;
+	height: 20px;
+	font-size: 10px;
+	padding: 2px;
+	margin: 2px;
+}
+
+.platform:hover {
+	color: red;
+}
+
 .add-button {
-	background-color: #AEA8D3;
+	background-color: #06AED5;
 	color: #fff;
 	font-weight: bold;
 	width: 150px;
@@ -61,15 +81,15 @@
 }
 
 .edit-button {
-	background-color: #59ABE3;
+	background-color: #086788;
 }
 
 .del-button {
-	background-color: #D24D57;
+	background-color: #DD1C1A;
 }
 
 .back-button {
-	background-color: #59ABE3;
+	background-color: #086788;
 }
 
 .review-button {
@@ -96,7 +116,7 @@
 
 .search-box .search-button {
 	width: 50px;
-	background-color: #AEA8D3;
+	background-color: #06AED5;
 	font-weight: bolder;
 	color: #fff;
 }
@@ -107,14 +127,14 @@
 
 .notice {
 	background-color: #C8F7C5;
-	padding-top: 8px;
 	display: block;
 	width: auto;
+	padding-top: 8px;
 }
 
 .error {
-	background-color: #D24D57;
-	padding-top: 8px;
+	background-color: #DD1C1A;
 	display: block;
 	width: auto;
+	padding-top: 8px;
 }
