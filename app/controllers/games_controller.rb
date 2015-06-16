@@ -24,14 +24,14 @@ class GamesController < ApplicationController
     platform = params[:platform]
     genre = params[:genre]
 
-    if platform.blank? || platform == 'All'
+    if platform.blank?
       @games = Game.all
     else
       @games = Game.where("platform like ?", platform)
     end
 
     if platform.blank?
-      if genre.blank? || genre == 'All'
+      if genre.blank?
         @games = Game.all
       else
         @games = Game.where("genre like ?", genre)
