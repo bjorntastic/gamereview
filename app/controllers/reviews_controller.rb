@@ -1,16 +1,15 @@
 class ReviewsController < ApplicationController
 
   before_action :check_if_logged_in
+  before_action :set_project
   
   def new
   	@review = Review.new
-  	@game = Game.find(params[:game_id])
   	@review.game = @game
   end
 
   def create
   	@review = Review.new(review_params)
-  	@game = Game.find(params[:game_id])
   	@review.game = @game
     @review.user_id = session[:user_id]
   	if @review.save
@@ -22,7 +21,6 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-  	@game = Game.find(params[:game_id])
   	Review.find(params[:id]).destroy
   	flash[:notice] = 'Review deleted.'
   	redirect_to @game
@@ -32,6 +30,11 @@ class ReviewsController < ApplicationController
 
   def review_params
   	params.require(:review).permit(:rating, :title, :comment)
+  end
+
+  # instead of calling it in every method, it's the parent resource
+  def set_project
+    @game = Game.find(params[:game_id])
   end
 
 end

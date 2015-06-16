@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   
   before_action :check_if_logged_in
+  before_action :set_game, :only => [:show, :edit, :destroy]
 
   def search
     query = params[:search]
@@ -40,9 +41,7 @@ class GamesController < ApplicationController
 
   end
 
-  def show
-    @game = Game.find(params[:id])
-  end
+  def show; end
 
   def new
     @game = Game.new
@@ -58,12 +57,9 @@ class GamesController < ApplicationController
     end
   end
 
-  def edit
-    @game = Game.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @game = Game.find(params[:id])
     if @game.update(game_params)
       flash[:notice] = 'Game updated.'
       redirect_to :games
@@ -73,12 +69,16 @@ class GamesController < ApplicationController
   end
 
   def destroy
-    Game.find(params[:id]).destroy
+    @game.destroy
     flash[:notice] = 'Game deleted.'
     redirect_to :games
   end
 
   private
+
+  def set_game
+    @game = Game.find(params[:id])
+  end
 
   def game_params
     params.require(:game).permit(:name, :genre, :publisher, :platform)
