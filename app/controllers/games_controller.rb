@@ -23,7 +23,10 @@ class GamesController < ApplicationController
   end
 
   def index
-    @games = Game.order("#{sort_by} #{direction_of}")
+    @games = Game.where("name like ?", "%#{params[:search]}%").order("#{sort_by} #{direction_of}")
+    if @games.blank?
+      @games = Game.all
+    end
   end
 
   def show; end
