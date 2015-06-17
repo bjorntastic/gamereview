@@ -2,6 +2,7 @@ class GamesController < ApplicationController
   
   before_action :check_if_logged_in
   before_action :set_game, :only => [:show, :edit, :destroy]
+  helper_method :sort_by, :direction_of 
 
   def search
     query = params[:search]
@@ -22,23 +23,7 @@ class GamesController < ApplicationController
   end
 
   def index
-    platform = params[:platform]
-    genre = params[:genre]
-
-    if platform.blank?
-      @games = Game.all
-    else
-      @games = Game.where("platform like ?", platform)
-    end
-
-    if platform.blank?
-      if genre.blank?
-        @games = Game.all
-      else
-        @games = Game.where("genre like ?", genre)
-      end
-    end
-
+    @games = Game.order("#{sort_by} #{direction_of}")
   end
 
   def show; end
@@ -75,6 +60,14 @@ class GamesController < ApplicationController
   end
 
   private
+
+  def sort_by
+    Game.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
+  end
+
+  def direction_of
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
 
   def set_game
     @game = Game.find(params[:id])

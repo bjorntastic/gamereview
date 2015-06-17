@@ -138,3 +138,17 @@
 	width: auto;
 	padding-top: 8px;
 }
+
+.selected {
+	background-repeat: no-repeat;
+	background-position: center right;
+	padding-right: 14px;
+}
+
+.asc {
+	background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR16P1YxeR4tArNfns7F-pWSKUshHN1kBgB_JjcSqyIgW8T7O6ODEb32w);
+}
+
+.desc {
+	background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTK7Co2Sbh7jzJbsjuV7BvAUpgCRRPAXBzb-aD6c2DmQq2au55zefsaIA);
+}

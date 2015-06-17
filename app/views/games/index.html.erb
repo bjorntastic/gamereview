@@ -2,23 +2,6 @@
 	<h1>Games#index</h1>
 	<p class='heading-index'>Check out and rate all these awesome games.<br /><br/></p>
 
-	<div class='filters'>
-		<ul class='platform-list'>
-			<a href='/games' class='btn platform'>All</a>
-			<a href='/games?platform=PC' class='btn platform'>PC</a>
-			<a href='/games?platform=Mac' class='btn platform'>Mac</a>
-			<a href='/games?platform=iOS' class='btn platform'>iOS</a>
-			<a href='/games?platform=Android' class='btn platform'>Android</a>
-		</ul>
-		<ul class='genre-list'>
-			<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-			<a href='/games?genre=MOBA' class='btn platform'>MOBA</a>
-			<a href='/games?genre=Strategy' class='btn platform'>Strategy</a>
-			<a href='/games?genre=Shooter' class='btn platform'>Shooter</a>
-			<a href='/games?genre=RPG' class='btn platform'>RPG</a>
-		</ul>
-	</div>
-
 	<div class='search-box'>
 		<%= form_tag '/search', method: 'get' do %>
 			<%= text_field_tag :search, nil, :placeholder => "Search..." %>
@@ -30,10 +13,10 @@
 <div class='row main-table-wrapper'>
 	<table class='main-table'>
 		<tr>
-			<td class='col-xs-2 col-md-1'>Game</td>
-			<td class='col-xs-2 col-md-1'>Genre</td>
-			<td class='col-xs-2 col-md-1'>Publisher</td>
-			<td class='col-xs-2 col-md-1'>Platform</td>
+			<td class='col-xs-2 col-md-1'><%= sort_me("name", "Game") %></td>
+			<td class='col-xs-2 col-md-1'><%= sort_me("genre") %></td>
+			<td class='col-xs-2 col-md-1'><%= sort_me("publisher") %></td>
+			<td class='col-xs-2 col-md-1'><%= sort_me("platform") %></td>
 			<td class='col-xs-1'></td>
 			<td class='col-xs-1'></td>
 			<td class='col-xs-1'></td>
