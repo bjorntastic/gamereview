@@ -1,0 +1,4 @@
+$("section.errors").remove();
+$(".add-button-wrapper").remove();
+$(".new-table-wrapper").replaceWith("<%= escape_javascript(render 'form') %>");
+$(".new-table-wrapper").after("<div class='add-button-wrapper'><%= escape_javascript(link_to 'Add Game', new_game_path, :class => 'btn add-button', remote: true) %></div>");

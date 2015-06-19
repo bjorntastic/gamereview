@@ -12,10 +12,10 @@
 <% end %>
 
 <div class='new-table-wrapper'>
-<%= form_for @game, remote: true do |f| %>
+<%= form_for @game, remote: true, :class => 'form' do |f| %>
 
 	<table class='new-table'>
-		<h4><em><strong>Add Game</strong></em></h4>
+		<h4><em><strong><%= @game.new_record? ? "Add Game" : "Update Game" %></strong></em></h4>
 		<tr>
 			<th><%= f.label :name %></th>
 			<td><%= f.text_field :name %></td>

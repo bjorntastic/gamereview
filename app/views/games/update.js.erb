@@ -1,0 +1,6 @@
+<% if @game.errors.any? %>
+	$("section.errors").remove();
+	$("<section class='errors'><p><%= pluralize(@game.errors.count, 'error') %> found:</p><ul><% @game.errors.full_messages.each do |msg| %><li><%= msg %></li><% end %></ul></section>").insertBefore(".new-table-wrapper");
+<% else %>
+	$("<%= escape_javascript(render 'index') %>");
+<% end %>

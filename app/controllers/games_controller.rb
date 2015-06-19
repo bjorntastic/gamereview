@@ -38,6 +38,10 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+    respond_to do |format|
+      format.html { }
+      format.js { }
+    end
   end
 
   def create
@@ -55,14 +59,23 @@ class GamesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    respond_to do |format|
+      format.html { }
+      format.js { }
+    end
+  end
 
   def update
-    if @game.update(game_params)
-      flash[:notice] = 'Game updated.'
-      redirect_to :games
-    else
-      render 'new'
+    respond_to do |format|
+      if @game.update(game_params)
+        format.html { flash[:notice] = 'Game updated.'
+                      redirect_to :games }
+        format.js { }
+      else
+        format.html { render 'new' }
+        format.js { }
+      end
     end
   end
 

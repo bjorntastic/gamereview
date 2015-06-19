@@ -1,5 +1,5 @@
 <div class='row'>
-	<h1>Games#index</h1>
+	<h1>Game Reviews</h1>
 	<p class='heading-index'>Check out and rate all these awesome games.<br /><br/></p>
 
 	<div class='search-box'>
@@ -32,7 +32,7 @@
 			<td><%= g.publisher %></td>
 			<td><%= g.platform %></td>
 			<td><%= link_to 'Show', g, :class => 'btn show-button' %></td>
-			<td><%= link_to 'Edit', edit_game_path(g), :class => 'btn edit-button' %></td>
+			<td><%= link_to 'Edit', edit_game_path(g), :class => 'btn edit-button', remote: true %></td>
 			<td><%= link_to 'Delete', g, remote: true, :method => 'delete', :class => 'btn del-button' %></td>
 		</tr>
 

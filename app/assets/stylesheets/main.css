@@ -25,6 +25,8 @@
 	border: 1px solid #DADFE1;
 	padding: 10px;
 	width: 290px;
+	display: inline-block;
+	float: left;
 }
 
 .new-table {
@@ -71,6 +73,12 @@
 	color: #fff;
 	font-weight: bold;
 	width: 150px;
+}
+
+.add-button-wrapper {
+	display: inline-block;
+	float: left;
+	margin-left: 30px;
 }
 
 .show-button, .edit-button, .del-button, .back-button {

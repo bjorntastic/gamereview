@@ -3,6 +3,7 @@
 //    return $(this).text() == "<%= @game.name %>";
 // }).closest("tr").fadeOut();
 
+$("section.errors").remove();
 $('th').each(function() {
 	if ($(this).text() === '<%= @game.name %>') {
 		$(this).closest('tr').remove();
