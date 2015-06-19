@@ -1,1 +1,7 @@
-$("<tr id='<%= @game.name %>'><th><%= escape_javascript(@game.name)%></th><td><%= escape_javascript(@game.genre)%></td><td><%= escape_javascript(@game.publisher)%></td><td><%= escape_javascript(@game.platform)%></td><td><%= escape_javascript(link_to 'Show', @game, :class => 'btn show-button')%></td><td><%= escape_javascript(link_to 'Edit', edit_game_path(@game), :class => 'btn edit-button')%></td><td><%= escape_javascript(link_to 'Delete', @game, :method => 'delete', :class => 'btn del-button', remote: true)%></td></tr>").appendTo('.main-table');
+<% if @game.errors.any? %>
+	$("section.errors").remove();
+	$("<section class='errors'><p><%= pluralize(@game.errors.count, 'error') %> found:</p><ul><% @game.errors.full_messages.each do |msg| %><li><%= msg %></li><% end %></ul></section>").insertBefore(".new-table-wrapper");
+<% else %>
+	$("section.errors").remove();
+	$("<tr id='<%= @game.name %>'><th><%= escape_javascript(@game.name)%></th><td><%= escape_javascript(@game.genre)%></td><td><%= escape_javascript(@game.publisher)%></td><td><%= escape_javascript(@game.platform)%></td><td><%= escape_javascript(link_to 'Show', @game, :class => 'btn show-button')%></td><td><%= escape_javascript(link_to 'Edit', edit_game_path(@game), :class => 'btn edit-button')%></td><td><%= escape_javascript(link_to 'Delete', @game, :method => 'delete', :class => 'btn del-button', remote: true)%></td></tr>").appendTo('.main-table');
+<% end %>
