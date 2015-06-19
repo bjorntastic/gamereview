@@ -23,6 +23,11 @@ class GamesController < ApplicationController
   end
 
   def index
+    @games = Game.order(name: "ASC")
+  end
+
+  def index
+    @game = Game.new
     @games = Game.where("name like ?", "%#{params[:search]}%").order("#{sort_by} #{direction_of}")
     if @games.blank?
       @games = Game.all
@@ -37,11 +42,16 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
-    if @game.save
-      flash[:notice] = 'Game created.'
-      redirect_to :games
-    else
-      render 'new'
+    respond_to do |format|
+      if @game.save
+        format.html { flash[:notice] = 'Game created.'
+                      redirect_to :games
+                    }
+        format.js { }
+      else
+        format.html { render 'new' }
+        format.js { }
+      end
     end
   end
 
@@ -58,8 +68,11 @@ class GamesController < ApplicationController
 
   def destroy
     @game.destroy
-    flash[:notice] = 'Game deleted.'
-    redirect_to :games
+    respond_to do |format|
+      format.html { flash[:notice] = 'Game deleted.'
+                  redirect_to :games}
+      format.js { }
+    end
   end
 
   private

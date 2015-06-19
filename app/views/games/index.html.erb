@@ -26,19 +26,20 @@
 		
 	<% @games.each_with_index do |g,i| %>
 		
-		<tr>
+		<tr id='<%= g.name %>'>
 			<th><%= g %></th>
 			<td><%= g.genre %></td>
 			<td><%= g.publisher %></td>
 			<td><%= g.platform %></td>
 			<td><%= link_to 'Show', g, :class => 'btn show-button' %></td>
 			<td><%= link_to 'Edit', edit_game_path(g), :class => 'btn edit-button' %></td>
-			<td><%= link_to 'Delete', g, :method => 'delete', :class => 'btn del-button' %></td>
+			<td><%= link_to 'Delete', g, remote: true, :method => 'delete', :class => 'btn del-button' %></td>
 		</tr>
 
 	<% end %>
 	</table>
 </div>
 
-<br />
-<%= link_to 'Add Game', new_game_path, :class => 'btn add-button' %>
+<br /><br />
+
+<%= render 'form' %>

@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).ready(function() {
+	$('.main-table').on('mouseover', 'tr', function() {
+		$(this).css({'border': '1px solid black'});
+	});
+	$('.main-table').on('mouseleave', 'tr', function() {
+		$(this).css({'border': '0px solid black'});
+	});
+});

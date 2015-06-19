@@ -12,9 +12,10 @@
 <% end %>
 
 <div class='new-table-wrapper'>
-<%= form_for @game do |f| %>
+<%= form_for @game, remote: true do |f| %>
 
 	<table class='new-table'>
+		<h4><em><strong>Add Game</strong></em></h4>
 		<tr>
 			<th><%= f.label :name %></th>
 			<td><%= f.text_field :name %></td>
@@ -24,7 +25,7 @@
 			<td><%= f.select :genre, ["Shooter", "MOBA", "RPG", "Strategy"] %></td>
 		</tr>
 		<tr>
-			<th><%= f.label :publisher %></th>
+			<th><%= f.label :publisher %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
 			<td><%= f.text_field :publisher %></td>
 		</tr>
 		<tr>
@@ -32,7 +33,7 @@
 			<td><%= f.select :platform, ["PC", "Mac", "iOS", "Android", "Console"] %></td>
 		</tr>
 		<tr>
-			<td><%= f.submit @game.new_record? ? 'Create Game' : 'Update Game' %></td>
+			<td></td><td><%= f.submit @game.new_record? ? 'Create Game' : 'Update Game' %></td>
 		</tr>
 	</table>
 

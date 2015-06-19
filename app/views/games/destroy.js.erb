@@ -1,0 +1,10 @@
+// Stackoverflow way of doing it, more elegant
+//$("th").filter(function() {
+//    return $(this).text() == "<%= @game.name %>";
+// }).closest("tr").fadeOut();
+
+$('th').each(function() {
+	if ($(this).text() === '<%= @game.name %>') {
+		$(this).closest('tr').remove();
+	}
+});
