@@ -29,11 +29,31 @@
 			<td><%= f.text_field :publisher %></td>
 		</tr>
 		<tr>
-			<th><%= f.label :platform %></th>
-			<td><%= f.select :platform, ["PC", "Mac", "iOS", "Android", "Console"] %></td>
+			<th>
+				<%= f.label :platform %>
+			</th>
+			<td>
+				<div class='btn-group' data-toggle='buttons'>
+				<label class='btn btn-primary'>
+					<%= f.radio_button :platform, "PC" %>PC
+				</label>
+				<label class='btn btn-primary'>
+					<%= f.radio_button :platform, "Mac" %>Mac
+				</label>
+				<label class='btn btn-primary'>
+					<%= f.radio_button :platform, "iOS" %>iOS
+				</label>
+				<label class='btn btn-primary'>
+					<%= f.radio_button :platform, "Android" %>Android
+				</label>
+				<label class='btn btn-primary'>
+					<%= f.radio_button :platform, "Console" %>Console
+				</label>
+				</div>
+			</td>
 		</tr>
 		<tr>
-			<td></td><td><%= f.submit @game.new_record? ? 'Create Game' : 'Update Game', :class => 'btn add-button' %></td>
+			<td></td><td><%= f.submit @game.new_record? ? 'Create Game' : 'Update Game', :class => 'btn add-button', :id => 'create-button' %></td>
 		</tr>
 	</table>
 
