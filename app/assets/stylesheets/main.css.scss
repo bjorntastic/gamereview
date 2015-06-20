@@ -1,0 +1,151 @@
+$action-color: #06AED5;
+
+@mixin small-buttons {
+	width: 60px;
+	height: 22px;
+	padding: 0px;
+	color: #fff;
+	font-weight: bold;
+}
+
+
+.errors {
+	background-color: #4444ff;
+	border: 3px solid red;
+	width: 500px;
+	ul li {
+		background-color: #e43741;
+		width: 250px;
+	}
+}
+
+.main-table tr:nth-child(even) {
+	background-color: lightblue;
+}
+
+.main-table tr:nth-child(1) td {
+	font-weight: bold;
+	height: 30px;
+	font-size: 1.3em;
+}
+
+.main-table-wrapper {
+	text-align: center;
+	background-color: #FFF1D0;
+	padding: 20px;
+	th {
+		text-align: center;
+	}
+}
+
+.new-table-wrapper {
+	background-color: #ECF0F1;
+	border: 1px solid #DADFE1;
+	padding: 10px;
+	width: 290px;
+	display: inline-block;
+	float: left;
+}
+
+.heading-index {
+	float: left;
+}
+
+.search-box {
+	float: right;
+	margin-bottom: 25px;
+}
+
+.search-box input {
+	width: 200px;
+	height: 40px;
+}
+
+.search-box .search-button {
+	width: 50px;
+	background-color: #06AED5;
+	font-weight: bolder;
+	color: #fff;
+}
+
+.search-button:hover {
+	color: #000;
+}
+
+.notice {
+	background-color: #C8F7C5;
+	display: block;
+	width: auto;
+	padding-top: 8px;
+}
+
+.error {
+	background-color: #DD1C1A;
+	display: block;
+	width: auto;
+	padding-top: 8px;
+}
+
+.selected {
+	background-repeat: no-repeat;
+	background-position: center right;
+	padding-right: 10px;
+}
+
+.asc {
+	background-image: url("/assets/arrow_up.png");
+}
+
+.desc {
+	background-image: url('/assets/arrow_down.png');
+}
+
+/*
+ALL BUTTONS STYLING
+*/
+
+.add-button-wrapper {
+	display: inline-block;
+	float: left;
+	margin-left: 30px;
+}
+
+.add-button {
+	background-color: $action-color;
+	color: #fff;
+	font-weight: bold;
+	width: 150px;
+}
+
+.show-button {
+	background-color: #68C3A3;
+	@include small-buttons;
+}
+
+.edit-button {
+	background-color: #086788;
+	@include small-buttons;
+}
+
+.del-button {
+	background-color: #DD1C1A;
+	@include small-buttons;
+}
+
+.back-button {
+	background-color: #086788;
+	float: left;
+	margin-left: 15px;
+	@include small-buttons;
+}
+
+.review-button {
+	width: 120px;
+	height: 22px;
+	padding: 0px;
+	color: #fff;
+	font-weight: bold;
+	background-color:#68C3A3;
+	margin-left:20px;
+	float:left;
+}
