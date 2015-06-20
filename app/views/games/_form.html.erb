@@ -33,7 +33,7 @@
 			<td><%= f.select :platform, ["PC", "Mac", "iOS", "Android", "Console"] %></td>
 		</tr>
 		<tr>
-			<td></td><td><%= f.submit @game.new_record? ? 'Create Game' : 'Update Game' %></td>
+			<td></td><td><%= f.submit @game.new_record? ? 'Create Game' : 'Update Game', :class => 'btn add-button' %></td>
 		</tr>
 	</table>
 

@@ -11,7 +11,7 @@
 
 <% end %>
 
-
+<div class='new-review-wrapper'>
 <%= form_for [@game, @review] do |f| %>
 
 	<table>
@@ -24,12 +24,14 @@
 			<td><%= f.text_field :title %></td>
 		</tr>
 		<tr>
-			<th><%= f.label :comment %></th>
+			<th><%= f.label :comment %>&nbsp&nbsp&nbsp&nbsp&nbsp</th>
 			<td><%= f.text_area :comment %></td>
 		</tr>
 		<tr>
-			<td><%= f.submit 'Add review' %></td>
+			<td></td>
+			<td><%= f.submit 'Add review', :class => 'btn add-button' %></td>
 		</tr>
 	</table>
 
 <% end %>
+</div>

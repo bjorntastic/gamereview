@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   
   before_action :check_if_logged_in
-  before_action :set_game, :only => [:show, :edit, :destroy]
+  before_action :set_game, :only => [:show, :edit, :update, :destroy]
   helper_method :sort_by, :direction_of 
 
   def search
@@ -34,7 +34,13 @@ class GamesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @game = Game.find(params[:id])
+    respond_to do |format|
+      format.html { }
+      format.js { }
+    end
+  end
 
   def new
     @game = Game.new
@@ -67,6 +73,7 @@ class GamesController < ApplicationController
   end
 
   def update
+    @games = Game.all
     respond_to do |format|
       if @game.update(game_params)
         format.html { flash[:notice] = 'Game updated.'
