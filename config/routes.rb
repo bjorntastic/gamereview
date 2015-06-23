@@ -24,7 +24,9 @@ Rails.application.routes.draw do
   #   resources :products
   resources :users
   resources :games do
-    resources :reviews
+    resources :reviews do 
+      member { post :vote }
+    end
   end
 
   # Example resource route with options:

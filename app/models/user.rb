@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
 	has_many :reviews
+	has_many :votes
 
 	validates :username, :presence => true,
 						 :uniqueness => true,

@@ -25,6 +25,19 @@ class ReviewsController < ApplicationController
   	redirect_to @game
   end
 
+  def vote
+    review = Review.find(params[:id])
+    vote = Vote.new
+    vote.review_id = review.id
+    vote.user_id = session[:user_id]
+    vote.value = params[:value]
+    if vote.save
+      redirect_to :back, notice: "Vote saved!"
+    else
+      redirect_to :back, notice: "Vote failed :("
+    end
+  end
+
   private
 
   def review_params

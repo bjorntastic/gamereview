@@ -16,9 +16,19 @@
 		<% @game.reviews.each_with_index do |r,i| %>
 
 		<div>
-			<h4><%= i+1 %>. <%= r.title %> | <%= r.rating %> out of 5</h4>
+			<h4><%= i+1 %>. <%= r.title %> | <%= r.rating %>/5</h4>
 			<p><%= r.comment %></p>
-			<p>review by <%= r.user %> on <%= r.created_at.strftime('%m/%d/%y %H:%M') %> | <%= link_to 'Delete', game_review_path(@game, r), :method => 'delete' %></p>
+			<p>
+				<%= (session[:user_id] == r.user_id) ? raw('<strong>You reviewed</strong> this game') : "Reviewed by " + r.user.to_s %> on <%= r.created_at.strftime('%m/%d/%y %H:%M') %> 
+				| karma: <%= r.votes.sum(:value) %>
+				<% if session[:user_id] == r.user_id %> |
+					<%= link_to 'Delete', game_review_path(@game, r), :method => 'delete' %>
+				<% end %>
+				<div class=''>
+					Vote: <%= link_to 'upvote', vote_game_review_path(@game, r, value: 1), method: 'post' %><%= %> | 
+					<%= link_to 'downvote', vote_game_review_path(@game, r, value: -1), method: 'post' %><%= %>
+				</div>
+			</p>			
 		</div>
 		<hr/>
 		<% end %>
