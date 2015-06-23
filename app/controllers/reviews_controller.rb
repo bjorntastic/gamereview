@@ -4,13 +4,12 @@ class ReviewsController < ApplicationController
   before_action :set_project
   
   def new
-  	@review = Review.new
-  	@review.game = @game
+    # could also run Review.new and set @review.game_id = @game
+  	@review = @game.reviews.build
   end
 
   def create
-  	@review = Review.new(review_params)
-  	@review.game = @game
+  	@review = @game.reviews.build(review_params)
     @review.user_id = session[:user_id]
   	if @review.save
   		flash[:notice] = 'Review created.'

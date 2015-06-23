@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def check_if_logged_in
   	unless session[:user_id]
   		flash[:notice] = 'Please login first.'
-  		redirect_to '/'
+  		redirect_to '/login'
   		return false
   	else
   		return true
