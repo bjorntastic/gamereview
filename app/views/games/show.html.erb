@@ -3,8 +3,11 @@
 <div class='row'>
 	<%= link_to 'Back', games_path , :class => 'btn back-button' %>
 	<%= link_to 'Leave a review', new_game_review_path(@game), :class => 'btn review-button', remote: true %>
+	
+	<% unless @game.game_votes.map{|v| v.user_id}.include? session[:user_id] %>
 	<%= link_to 'Upvote Game', vote_game_path(@game, value: 1), :method => 'post', class: 'btn btn-success', style: 'margin-left: 100px' %>
 	<%= link_to 'Downvote Game', vote_game_path(@game, value: -1), :method => 'post', class: 'btn btn-danger' %>
+	<% end %>
 </div>
 
 <div id='review-wrapper'>

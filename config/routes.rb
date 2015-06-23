@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get '/logout' => 'users#logout'
   get '/search' => 'games#search'
 
+  post '/users' => 'users#create'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -22,7 +24,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :users
+
   resources :games do
     member { post :vote }
     resources :reviews do 

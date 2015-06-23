@@ -35,7 +35,9 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save
-  		flash[:notice] = 'New account created.'
+  		session[:user_id] = @user.id
+      session[:username] = @user.username
+      flash[:notice] = 'New account created.'
   		redirect_to '/'
   	else
   		render 'register'
