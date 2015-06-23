@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   #   resources :products
   resources :users
   resources :games do
+    member { post :vote }
     resources :reviews do 
       member { post :vote }
     end

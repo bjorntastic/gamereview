@@ -3,6 +3,8 @@
 <div class='row'>
 	<%= link_to 'Back', games_path , :class => 'btn back-button' %>
 	<%= link_to 'Leave a review', new_game_review_path(@game), :class => 'btn review-button', remote: true %>
+	<%= link_to 'Upvote Game', vote_game_path(@game, value: 1), :method => 'post', class: 'btn btn-success', style: 'margin-left: 100px' %>
+	<%= link_to 'Downvote Game', vote_game_path(@game, value: -1), :method => 'post', class: 'btn btn-danger' %>
 </div>
 
 <div id='review-wrapper'>
@@ -24,10 +26,15 @@
 				<% if session[:user_id] == r.user_id %> |
 					<%= link_to 'Delete', game_review_path(@game, r), :method => 'delete' %>
 				<% end %>
-				<div class=''>
-					Vote: <%= link_to 'upvote', vote_game_review_path(@game, r, value: 1), method: 'post' %><%= %> | 
-					<%= link_to 'downvote', vote_game_review_path(@game, r, value: -1), method: 'post' %><%= %>
-				</div>
+				
+				<% unless (r.votes.map{|u| u.user_id}.include? session[:user_id]) || (session[:user_id] == r.user_id) %>
+					<div>
+						Vote:
+						<%= link_to 'upvote', vote_game_review_path(@game, r, value: 1), method: 'post' %><%= %> | 
+						<%= link_to 'downvote', vote_game_review_path(@game, r, value: -1), method: 'post' %><%= %>
+					</div>
+				<% end %>
+
 			</p>			
 		</div>
 		<hr/>

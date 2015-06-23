@@ -23,10 +23,6 @@ class GamesController < ApplicationController
   end
 
   def index
-    @games = Game.order(name: "ASC")
-  end
-
-  def index
     @game = Game.new
     @games = Game.where("name like ?", "%#{params[:search]}%").order("#{sort_by} #{direction_of}")
     if @games.blank?
@@ -92,6 +88,18 @@ class GamesController < ApplicationController
       format.html { flash[:notice] = 'Game deleted.'
                   redirect_to :games}
       format.js { }
+    end
+  end
+
+  def vote
+    vote = GameVote.new
+    vote.game = Game.find(params[:id])
+    vote.user_id = session[:user_id]
+    vote.value = params[:value]
+    if vote.save
+      redirect_to :back, notice: 'Voted!'
+    else
+      redirect_to :back, notice: 'Didnt vote, something went wrong.'
     end
   end
 

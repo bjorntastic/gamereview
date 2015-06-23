@@ -16,7 +16,8 @@
 <div class='row main-table-wrapper'>
 	<table class='main-table'>
 		<tr>
-			<td class='col-xs-2 col-md-1'><%= sort_me("name", "Game") %></td>
+			<td class='col-xs-3 col-md-2'><%= sort_me("name", "Game") %></td>
+			<td class='col-xs-2 col-md-1'><%= sort_me("karma") %></td>
 			<td class='col-xs-2 col-md-1'><%= sort_me("genre") %></td>
 			<td class='col-xs-2 col-md-1'><%= sort_me("publisher") %></td>
 			<td class='col-xs-2 col-md-1'><%= sort_me("platform") %></td>
@@ -29,6 +30,7 @@
 		
 		<tr id='<%= g.name %>'>
 			<th><%= g %></th>
+			<td><%= "+" if g.game_votes.sum("value") > 0 %><%= "-" if g.game_votes.sum("value") < 0 %><%= raw("&nbsp") if g.game_votes.sum("value") == 0 %><%= g.game_votes.sum(:value).abs %></td>
 			<td><%= g.genre %></td>
 			<td><%= g.publisher %></td>
 			<td><%= g.platform %></td>

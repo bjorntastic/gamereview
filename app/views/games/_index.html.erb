@@ -27,7 +27,7 @@
 	<% @games.each_with_index do |g,i| %>
 		
 		<tr id='<%= g.name %>'>
-			<th><%= g %></th>
+			<th><%= g %> (<%= g.game_votes.sum(:value) %>)</th>
 			<td><%= g.genre %></td>
 			<td><%= g.publisher %></td>
 			<td><%= g.platform %></td>
