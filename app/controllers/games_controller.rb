@@ -24,7 +24,10 @@ class GamesController < ApplicationController
 
   def index
     @game = Game.new
-    @games = Game.where("name like ?", "%#{params[:search]}%").order("#{sort_by} #{direction_of}")
+    #@games = Game.where("name like ?", "%#{params[:search]}%").order("#{sort_by} #{direction_of}")
+    # use sql instead to get the sum(values) from other table
+    @games = Game.find_by_sql("SELECT games.id, games.name, games.publisher, games.genre, games.platform, sum(game_votes.value) as karma from games inner join game_votes on games.id = game_votes.game_id group by games.id, games.name, games.publisher, games.genre, games.platform, game_votes.game_id #{sorted_for_sql}")
+
     if @games.blank?
       @games = Game.all
     end
@@ -105,8 +108,16 @@ class GamesController < ApplicationController
 
   private
 
+  def sorted_for_sql
+    if params[:sort].nil? || params[:direction].nil?
+      ""
+    else
+      "order by #{params[:sort]} #{params[:direction]}"
+    end
+  end
+
   def sort_by
-    Game.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
+    params[:sort].present? ? params[:sort] : 'created_at'
   end
 
   def direction_of
