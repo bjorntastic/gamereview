@@ -1,36 +1,16 @@
 class GamesController < ApplicationController
   
   before_action :check_if_logged_in
-  before_action :set_game, :only => [:show, :edit, :update, :destroy]
+  before_action :set_game, :only => [:show, :edit, :update, :destroy, :vote]
   helper_method :sort_by, :direction_of 
-
-  def search
-    query = params[:search]
-    if query.blank?
-      @games = Game.all
-      flash.now[:error] = "We can't search for nothing, try writing something in the box before hitting 'Go'."
-      render 'index'
-    else
-      @result = Game.where("name like ?", "%#{query}%").first
-      if @result.blank?
-        @games = Game.all
-        flash.now[:error] = "Couldn't find that game. Try something else!"
-        render 'index'
-      else
-        redirect_to "/games/#{@result.id}"
-      end
-    end
-  end
 
   def index
     @game = Game.new
-    #@games = Game.where("name like ?", "%#{params[:search]}%").order("#{sort_by} #{direction_of}")
+    @games = Game.where("name like ?", "%#{params[:q]}%").order("#{sort_by} #{direction_of}")
+    
     # use sql instead to get the sum(values) from other table
-    @games = Game.find_by_sql("SELECT games.id, games.name, games.publisher, games.genre, games.platform, sum(game_votes.value) as karma from games inner join game_votes on games.id = game_votes.game_id group by games.id, games.name, games.publisher, games.genre, games.platform, game_votes.game_id #{sorted_for_sql}")
-
-    if @games.blank?
-      @games = Game.all
-    end
+    # @games = Game.find_by_sql("SELECT games.id, games.name, games.publisher, games.genre, games.platform, sum(game_votes.value) as karma from games inner join game_votes on games.id = game_votes.game_id group by games.id, games.name, games.publisher, games.genre, games.platform, game_votes.game_id #{sorted_for_sql}")
+    
   end
 
   def show
@@ -96,7 +76,7 @@ class GamesController < ApplicationController
 
   def vote
     vote = GameVote.new
-    vote.game = Game.find(params[:id])
+    vote.game = @game
     vote.user_id = session[:user_id]
     vote.value = params[:value]
     if vote.save
@@ -117,7 +97,7 @@ class GamesController < ApplicationController
   end
 
   def sort_by
-    params[:sort].present? ? params[:sort] : 'created_at'
+    params[:sort].present? ? params[:sort] : 'games.created_at'
   end
 
   def direction_of

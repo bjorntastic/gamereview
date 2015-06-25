@@ -11,7 +11,7 @@
 <% unless session[:user_id].nil? %>
 	<div class='container'>
 		<nav class='logout'>
-			<p>Logged in as <strong><%= session[:username] %></strong> | <%= link_to 'Logout', 'logout' %>
+			<p>Logged in as <strong><%= session[:username] %></strong> | <%= link_to 'Logout', '/logout' %>
 		</nav>
 	</div>
 <% end %>

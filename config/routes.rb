@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   post '/register' => 'users#create'
   get '/login' => 'users#login'
   get '/logout' => 'users#logout'
-  get '/search' => 'games#search'
-
   post '/users' => 'users#create'
 
   # Example of regular route:
@@ -27,7 +25,10 @@ Rails.application.routes.draw do
 
   resources :games do
     member { post :vote }
-    resources :reviews do 
+    collection do
+      get '/search' => 'games#index'
+    end
+    resources :reviews do
       member { post :vote }
     end
   end
