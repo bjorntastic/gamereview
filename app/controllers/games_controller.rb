@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   
-  before_action :check_if_logged_in
+  #before_action :check_if_logged_in
   before_action :set_game, :only => [:show, :edit, :update, :destroy, :vote]
   helper_method :sort_by, :direction_of 
 
