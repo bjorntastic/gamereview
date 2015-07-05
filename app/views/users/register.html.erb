@@ -15,7 +15,7 @@
 	</div>
 <% end %>
 
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, url: { :action => 'create' }) do |f| %>
 	
 	<div class='row'>
 		<%= f.label :username, :class => 'col-md-3' %>
